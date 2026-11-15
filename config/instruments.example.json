@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "config_version": "mlof-v2-data-example-1",
+  "min_ready_bars": 50,
+  "calendar_id": "synthetic-example-calendar",
+  "instruments": [
+    {
+      "instrument": "TESTUSD",
+      "tick_size": "0.01"
+    }
+  ]
+}

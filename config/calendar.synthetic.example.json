@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "calendar_id": "synthetic-example-calendar",
+  "coverage": {
+    "start_utc": "2024-01-01T00:00:00Z",
+    "end_utc": "2024-01-01T00:06:00Z"
+  },
+  "open_intervals": [
+    {
+      "start_utc": "2024-01-01T00:00:00Z",
+      "end_utc": "2024-01-01T00:05:00Z"
+    }
+  ],
+  "notice": "Synthetic test coverage only. Not a real instrument or broker calendar."
+}

@@ -1,0 +1,9 @@
+[project]
+name = "mlof-v2-offline-data-foundation"
+version = "0.1.0"
+description = "Offline MLOF v2 data, confirmed structural observations, and non-tradable bootstrap control initialization."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.mlof-v2]
+configuration-schema-version = 1

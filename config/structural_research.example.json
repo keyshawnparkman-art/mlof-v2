@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "config_version": "mlof-v2-structural-research-1",
+  "minimum_contiguous_bars": 50,
+  "equal_cluster_policy": "extend_before_confirmation_new_cluster_after_confirmation",
+  "pivot_widths": {
+    "15s": {"left": 3, "right": 3},
+    "30s": {"left": 3, "right": 3},
+    "1m": {"left": 2, "right": 2},
+    "3m": {"left": 2, "right": 2},
+    "5m": {"left": 2, "right": 2},
+    "15m": {"left": 2, "right": 2},
+    "30m": {"left": 2, "right": 2},
+    "1h": {"left": 2, "right": 2}
+  }
+}

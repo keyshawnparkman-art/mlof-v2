@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mlof.bootstrap_research.schema.v1",
+  "title": "MLOF v2 bootstrap research defaults",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "config_version", "minimum_contiguous_bars", "atr_period", "body_ratio_min", "range_atr_multiple_min", "close_location_min", "fvg_min_ticks", "fvg_atr_ratio_min", "fvg_earliest_third_offset", "fvg_latest_third_offset", "leg_max_bars"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "config_version": {"type": "string", "minLength": 1},
+    "minimum_contiguous_bars": {"type": "integer", "minimum": 1},
+    "atr_period": {"type": "integer", "minimum": 1},
+    "body_ratio_min": {"type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$"},
+    "range_atr_multiple_min": {"type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$"},
+    "close_location_min": {"type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$"},
+    "fvg_min_ticks": {"type": "integer", "minimum": 1},
+    "fvg_atr_ratio_min": {"type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$"},
+    "fvg_earliest_third_offset": {"type": "integer", "maximum": 0},
+    "fvg_latest_third_offset": {"type": "integer", "minimum": 0},
+    "leg_max_bars": {"type": "integer", "minimum": 1}
+  }
+}

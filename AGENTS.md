@@ -1,0 +1,21 @@
+# Project instructions
+
+- This workspace is an isolated MLOF v2 project. Keep the existing MLOF v1.3.1 project untouched.
+- Work offline. Do not add broker connectivity, exchange APIs, live feeds, credentials, order execution, position management, or deployment.
+- Governing authority is v0.3.6. Obtain the two owner-provided planning artifacts and verify SHA-256 before implementation: specification `7A9C0035D31921D530D72D4E8DCD2346E0035E95B4DAFEAAC6043B02547AAB96`, revision log `59976CAB7346EFBD5345171F15E248BD13B959F16C5785C7B66AD76F29351DF1`. Stop if either is missing or mismatched.
+- M4.5 SCALP is owner-accepted with 147 passing offline tests. Wait for explicit owner authorization before implementing another milestone. Keep SWING disabled and all dispositions non-tradable. Preserve historical evaluation semantics and formation-only readiness.
+- Work on an explicitly authorized milestone branch. Draft pull requests require owner authorization for submission. Only the owner accepts milestones and merges. Stop for strategy ambiguity, scope expansion, credential changes or security settings.
+- Use the Python standard library unless a future change is separately approved. Do not install dependencies silently.
+- Require explicit timezone-aware timestamps and explicit `as_of_utc`; never use the machine clock to infer candle completion.
+- Unknown tick-size metadata or session-calendar coverage must fail closed as `NOT_READY`. Never fabricate or forward-fill candles.
+- Keep normalized records traceable to their source file and row. Keep serialization, IDs, and rejection ordering deterministic.
+- Structural comparisons must use completed candles and tick-normalized prices. For configured widths `(L, R)`, compare `2L` completed candles to the left, the candidate anchor, and wait for `2R` completed candles to the right. A pivot is unavailable until the final right-side candle is complete and its source availability timestamp is reached. Never expose a pool to the candle that confirms it; enforce availability by a later candle's interval start and prior registration order.
+- Equal-price observations may extend a provisional cluster only before confirmation. After confirmation, never mutate its ID, anchor, members, price, confirmation, or availability. Later equal revisits are distinct candidates.
+- A detected expected data gap resets provisional structural history and makes the stream `NOT_READY`; never bridge or invent bars. Unknown calendar coverage also fails closed.
+- Keep pivot widths and readiness thresholds in versioned configuration. Treat them as research defaults, not optimized values or user-confirmed profitability rules.
+- Structural events must include stable IDs, config version, explainable reasons, source record IDs, and source provenance. Milestone 2 pivot events never imply control. The dedicated Milestone 3A bootstrap records may establish the one initial control and frozen range, but never permission to trade.
+- Bootstrap pair ranking is latest eligible availability, latest anchor time, then lexicographically smallest canonical pair ID. Registration ordering is only a causal eligibility check, never a ranking key. Bootstrap lineage IDs and ranges are immutable and explicitly non-tradable.
+- Bootstrap candidate lineage uses a stable parent ID derived from the first qualifying sweep, with the observation-pair ID substituting for the missing bootstrap control ancestor. Candidate IDs begin at `:candidate:v1`; each strictly deeper post-reclaim sweep increments exactly once and emits an immutable parent/canceled/replacement reset event with source timing and provenance. Equal or shallower sweeps do not increment. Collision checks cover frozen range IDs before any promotion is stored.
+- Run all tests locally with the standard library test runner. Do not add dependencies or access external services.
+- Keep implementation and test artifacts within this repository. Governing documents and older strategy drafts are kept separately pending explicit publication approval. Do not edit protected or governing artifacts.
+- From the repository root with `PYTHONPATH=src`, run `python -B -m unittest tests.test_scalp -q` and `python -B -m unittest discover -s tests -q`. Report commands, counts, acceptance checks, and blockers.

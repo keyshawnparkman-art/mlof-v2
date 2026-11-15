@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mlof.invalid/schemas/structural-research-v1.json",
+  "title": "MLOF v2 structural research configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "config_version", "minimum_contiguous_bars", "equal_cluster_policy", "pivot_widths"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "config_version": {"type": "string", "minLength": 1},
+    "minimum_contiguous_bars": {"type": "integer", "minimum": 1},
+    "equal_cluster_policy": {"const": "extend_before_confirmation_new_cluster_after_confirmation"},
+    "pivot_widths": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(15s|30s|1m|3m|5m|15m|30m|1h|4h|1d)$": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["left", "right"],
+          "properties": {
+            "left": {"type": "integer", "minimum": 1},
+            "right": {"type": "integer", "minimum": 1}
+          }
+        }
+      }
+    }
+  }
+}

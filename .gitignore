@@ -1,0 +1,59 @@
+# Python virtual environments and bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test, type-check, lint, and coverage caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local secrets and credentials
+.env
+.env.*
+.envrc
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+**/*secret*
+**/*credential*
+**/*password*
+**/*token*
+**/*api_key*
+**/*apikey*
+
+# Local-only configuration and imported/private market data
+config/*local*.json
+config/local/
+config/*local*/
+data/raw/
+data/processed/
+
+# Generated reports, temporary files, and logs
+reports/
+*.tmp
+*.temp
+*.swp
+*.log
+
+# Windows Explorer metadata
+Thumbs.db
+Desktop.ini
+
+# Private audit history and strategy artifacts
+/MILESTONE_*_REPORT.md
+/docs/MLOF_v2_Gate0_*.md
+/docs/governance/
